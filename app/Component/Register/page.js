@@ -2,7 +2,7 @@
 import React from 'react'
 
 
-const register = () => {
+const Register = () => {
   const myStyle = {
     backgroundColor: "#3b5998",
    }
@@ -187,4 +187,4 @@ const register = () => {
   )
 }
 
-export default register
+export default Register
