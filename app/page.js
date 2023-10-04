@@ -2,16 +2,13 @@
 import React from 'react'
 
 const page = () => {
-
-
-
-
- const myStyle = {
+  const myStyle = {
   backgroundColor: "#3b5998",
  }
  const myStyle1 = {
   backgroundColor: "#55acee",
  }
+//  This is home page 
   return (
     <div className=' bg-slate-800'>
       <section className="h-screen">
