@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import mongoose from "mongoose";
+import User from "./Models/user.js";
+import userData from "./Data/raw.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -17,19 +19,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
-app.get("/api/home" , (req , res)=>{
-    res.json({message : "Hello World"})
-})
-
 /* MOONGOOSE SETUP */
 
 const PORT = process.env.PORT || 9000;
-// mongoose.connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// }).then( () => {
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then( () => {
     app.listen(PORT,() => console.log(`Server Port: ${PORT}`))
 
-//     console.log("Data Imported successfully");
+    /*Add Data One Time */
+    User.insertMany(userData);
+   
+    console.log("Data Imported successfully");
 
-// }).catch((error) => console.log(`${error} did not connect`));
+}).catch((error) => console.log(`${error} did not connect`));
+
